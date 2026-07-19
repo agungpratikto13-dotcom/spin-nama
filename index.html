@@ -592,54 +592,56 @@ gambar();
 if(p<1){
 
 
-requestAnimationFrame(animasi);
+if(p<1){
 
+    requestAnimationFrame(animasi);
 
 }else{
 
-sedang=false;
+    sedang=false;
 
-let pemenang=nama[menang];
-
-document.getElementById("hasil").innerHTML =
-"🏆 "+pemenang+" Terpilih!";
+    let pemenang=nama[menang];
 
 
-mulaiTimer();
+    document.getElementById("hasil").innerHTML =
+    "🏆 "+pemenang+" Terpilih!";
 
 
-nama.splice(menang,1);
-warna.splice(menang,1);
+    // MULAI TIMER 20 MENIT
+    mulaiTimer();
+
+
+
+    nama.splice(menang,1);
+
+    warna.splice(menang,1);
+
+
+    angle=0;
+
+
+
+    setTimeout(
+        gambar,
+        800
+    );
+
+
+
+    if(nama.length===0){
+
+        setTimeout(()=>{
+
+            alert(
+            "Semua nama sudah mendapatkan giliran."
+            );
+
+        },1000);
+
+    }
+
 
 }
-);
-
-
-
-angle=0;
-
-
-
-setTimeout(
-gambar,
-800
-);
-
-
-
-if(nama.length===0){
-
-
-setTimeout(()=>{
-
-
-alert(
-"Semua nama sudah mendapatkan giliran."
-);
-
-
-},1000);
-
 
 }
 
@@ -655,14 +657,9 @@ alert(
 
 requestAnimationFrame(animasi);
 
-
-
 }
 
-
-
 </script>
-
 
 </body>
 
