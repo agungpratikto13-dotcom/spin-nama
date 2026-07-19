@@ -20,7 +20,7 @@ body{
     min-height:100vh;
 
     background:url("background.jpg") no-repeat center center;
-    background-size:100% 100%
+    background-size:contain;
 
     display:flex;
     justify-content:center;
@@ -51,10 +51,13 @@ h1{
 }
 
 canvas{
-    border:8px solid white;
+    border:8px solid #FFD700;
     border-radius:50%;
     background:white;
-    box-shadow:0 0 20px rgba(0,0,0,.5);
+    box-shadow:
+        0 0 20px #FFD700,
+        0 0 40px rgba(255,255,255,.5);
+}
 }
 
 button{
