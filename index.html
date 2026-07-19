@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
+<div id="hasil"></div>
 
+<div id="timer">
+    ⏱️ Waktu: 20:00
+</div>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +33,59 @@ body{
 
     font-family:Arial,Helvetica,sans-serif;
 }
+#timer{
+    margin-top:15px;
+    font-size:35px;
+    font-weight:bold;
+    color:#00ffcc;
+    text-shadow:2px 2px 8px black;
+}
+    let timerInterval;
 
+function mulaiTimer(){
+
+    let menit = 20;
+    let detik = 0;
+
+    clearInterval(timerInterval);
+
+    timerInterval=setInterval(function(){
+
+        if(detik === 0){
+
+            if(menit === 0){
+
+                clearInterval(timerInterval);
+
+                document.getElementById("timer").innerHTML=
+                "⏰ WAKTU HABIS!";
+
+                return;
+
+            }
+
+            menit--;
+            detik=59;
+
+        }else{
+
+            detik--;
+
+        }
+
+
+        let m = menit.toString().padStart(2,"0");
+        let d = detik.toString().padStart(2,"0");
+
+
+document.getElementById("hasil").innerHTML=
+"🏆 "+pemenang+" Terpilih!";
+
+mulaiTimer();
+
+    },1000);
+
+}
 /* Efek gelap di atas background */
 
 
@@ -57,7 +113,6 @@ canvas{
     box-shadow:
         0 0 20px #FFD700,
         0 0 40px rgba(255,255,255,.5);
-}
 }
 
 button{
