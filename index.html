@@ -22,24 +22,28 @@ body{
     min-height:100vh;
 
     background:url("background.jpg") no-repeat center center;
+
     background-size:cover;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     flex-direction:column;
 
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial, sans-serif;
 
 }
 
 
-/* lapisan gelap background */
-
 body::before{
 
     content:"";
+
     position:fixed;
+
     inset:0;
 
     background:rgba(0,0,0,.45);
@@ -58,8 +62,7 @@ h1{
 
     margin-bottom:20px;
 
-    text-shadow:
-    2px 2px 10px black;
+    text-shadow:2px 2px 10px black;
 
 }
 
@@ -68,10 +71,13 @@ h1{
 .arrow{
 
     width:0;
+
     height:0;
 
     border-left:20px solid transparent;
+
     border-right:20px solid transparent;
+
     border-top:40px solid red;
 
     margin-bottom:-8px;
@@ -91,6 +97,7 @@ canvas{
     box-shadow:
 
     0 0 20px #FFD700,
+
     0 0 40px white;
 
 }
@@ -115,29 +122,12 @@ button{
 
     cursor:pointer;
 
-    transition:.3s;
-
 }
-
-
-
-button:hover{
-
-    background:#019875;
-
-    transform:scale(1.05);
-
-}
-
 
 
 button:disabled{
 
     background:#555;
-
-    cursor:not-allowed;
-
-    transform:none;
 
 }
 
@@ -147,14 +137,11 @@ button:disabled{
 
     margin-top:20px;
 
+    color:white;
+
     font-size:30px;
 
     font-weight:bold;
-
-    color:white;
-
-    text-shadow:
-    2px 2px 8px black;
 
 }
 
@@ -164,20 +151,17 @@ button:disabled{
 
     margin-top:15px;
 
+    color:#00ffcc;
+
     font-size:35px;
 
     font-weight:bold;
-
-    color:#00ffcc;
-
-    text-shadow:
-    2px 2px 8px black;
 
 }
 
 
 
-.timer-merah{
+.merah{
 
     color:red !important;
 
@@ -216,6 +200,7 @@ button:disabled{
 </div>
 
 
+
 <script>
 
 
@@ -233,8 +218,7 @@ let nama=[
 ];
 
 
-
-const warnaAsli=[
+let warna=[
 
 "#ff7675",
 "#74b9ff",
@@ -249,10 +233,6 @@ const warnaAsli=[
 
 
 
-let warna=[...warnaAsli];
-
-
-
 const canvas=document.getElementById("wheel");
 
 const ctx=canvas.getContext("2d");
@@ -263,23 +243,30 @@ const radius=canvas.width/2;
 
 let angle=0;
 
-
 let sedang=false;
-
 
 let timerInterval;
 
 
 
+// =================
+// GAMBAR RODA
+// =================
+
+
 function gambar(){
 
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
 
 
 
-if(nama.length==0){
-
+if(nama.length===0){
 
 ctx.fillStyle="black";
 
@@ -293,29 +280,32 @@ radius,
 radius
 );
 
-
 return;
-
 
 }
 
 
 
-const arc=(2*Math.PI)/nama.length;
+let arc=
+(2*Math.PI)/nama.length;
 
 
 
 for(let i=0;i<nama.length;i++){
 
 
-
-const start=angle+i*arc;
+let start=
+angle+i*arc;
 
 
 
 ctx.beginPath();
 
-ctx.moveTo(radius,radius);
+ctx.moveTo(
+radius,
+radius
+);
+
 
 ctx.arc(
 radius,
@@ -327,7 +317,9 @@ start+arc
 
 
 
-ctx.fillStyle=warna[i];
+ctx.fillStyle=
+warna[i];
+
 
 ctx.fill();
 
@@ -336,12 +328,10 @@ ctx.fill();
 ctx.save();
 
 
-
 ctx.translate(
 radius,
 radius
 );
-
 
 
 ctx.rotate(
@@ -356,6 +346,7 @@ ctx.font="bold 20px Arial";
 
 ctx.textAlign="right";
 
+
 ctx.fillText(
 nama[i],
 radius-20,
@@ -363,145 +354,72 @@ radius-20,
 );
 
 
-
 ctx.restore();
 
 
-
 }
 
 
 }
-
 
 
 gambar();
-// =========================
-// TIMER 20 MENIT
-// =========================
+
+
+
+
+// =================
+// TIMER
+// =================
+
 
 function mulaiTimer(){
 
-    let menit = 20;
-    let detik = 0;
 
+let menit=20;
 
-    const timer =
-    document.getElementById("timer");
+let detik=0;
 
 
-    const tombol =
-    document.getElementById("spinButton");
 
+let timer=
+document.getElementById("timer");
 
-    tombol.disabled = true;
 
-    tombol.innerHTML =
-    "⏳ Tunggu 20 Menit...";
+let tombol=
+document.getElementById("spinButton");
 
 
-    clearInterval(timerInterval);
 
+tombol.disabled=true;
 
+tombol.innerHTML=
+"⏳ Tunggu 20 Menit";
 
-    timerInterval=setInterval(()=>{
 
 
-        if(menit===0 && detik===0){
+clearInterval(timerInterval);
 
 
-            clearInterval(timerInterval);
 
+timerInterval=setInterval(()=>{
 
-            timer.innerHTML =
-            "🚭 WAKTU SELESAI!";
 
+if(menit===0 && detik===0){
 
-            timer.classList.remove(
-                "timer-merah"
-            );
 
+clearInterval(timerInterval);
 
-            tombol.disabled=false;
 
+timer.innerHTML=
+"🚭 WAKTU SELESAI";
 
-            tombol.innerHTML =
-            "🎯 SPIN";
 
+tombol.disabled=false;
 
-            return;
 
-
-        }
-
-
-
-        if(detik===0){
-
-            menit--;
-
-            detik=59;
-
-
-        }else{
-
-
-            detik--;
-
-
-        }
-
-
-
-        if(menit===0){
-
-            timer.classList.add(
-                "timer-merah"
-            );
-
-        }
-
-
-
-        let m =
-        menit.toString().padStart(2,"0");
-
-
-        let d =
-        detik.toString().padStart(2,"0");
-
-
-
-        timer.innerHTML =
-        "⏱️ Waktu: "+m+":"+d;
-
-
-
-    },1000);
-
-
-}
-
-
-
-// =========================
-// FUNGSI SPIN
-// =========================
-
-
-function spin(){
-
-
-if(sedang) return;
-
-
-
-if(nama.length===0){
-
-
-alert(
-"Semua nama sudah terpilih!"
-);
+tombol.innerHTML=
+"🎯 SPIN";
 
 
 return;
@@ -511,26 +429,99 @@ return;
 
 
 
+if(detik===0){
+
+menit--;
+
+detik=59;
+
+
+}else{
+
+
+detik--;
+
+
+}
+
+
+
+if(menit===0){
+
+timer.classList.add("merah");
+
+}
+
+
+
+let m=
+menit.toString().padStart(2,"0");
+
+
+let d=
+detik.toString().padStart(2,"0");
+
+
+
+timer.innerHTML=
+"⏱️ Waktu: "+m+":"+d;
+
+
+
+},1000);
+
+
+
+}
+
+
+
+
+
+// =================
+// SPIN
+// =================
+
+
+function spin(){
+
+
+if(sedang) return;
+
+
+if(nama.length===0){
+
+alert(
+"Semua nama sudah habis"
+);
+
+return;
+
+}
+
+
+
 sedang=true;
+
 
 
 document.getElementById("hasil").innerHTML="";
 
 
 
-const menang =
+let menang=
 Math.floor(
 Math.random()*nama.length
 );
 
 
 
-const arc =
+let arc=
 (2*Math.PI)/nama.length;
 
 
 
-const target =
+let target=
 (Math.PI*1.5)
 -
 (menang*arc)
@@ -539,19 +530,20 @@ const target =
 
 
 
-const putaran =
+let putaran=
 (Math.PI*2*6)+target;
 
 
 
-const awal=angle;
+let awal=angle;
 
 
 
-const durasi=5000;
+let durasi=5000;
 
 
 let mulai=null;
+
 
 
 
@@ -564,7 +556,7 @@ mulai=w;
 
 
 
-let p =
+let p=
 (w-mulai)/durasi;
 
 
@@ -575,12 +567,12 @@ p=1;
 
 
 
-let ease =
+let ease=
 1-Math.pow(1-p,3);
 
 
 
-angle =
+angle=
 awal+(putaran*ease);
 
 
@@ -592,63 +584,60 @@ gambar();
 if(p<1){
 
 
-if(p<1){
+requestAnimationFrame(animasi);
 
-    requestAnimationFrame(animasi);
+
 
 }else{
 
-    sedang=false;
-
-    let pemenang=nama[menang];
 
 
-    document.getElementById("hasil").innerHTML =
-    "🏆 "+pemenang+" Terpilih!";
-
-
-    // MULAI TIMER 20 MENIT
-    mulaiTimer();
+sedang=false;
 
 
 
-    nama.splice(menang,1);
-
-    warna.splice(menang,1);
-
-
-    angle=0;
+let pemenang=
+nama[menang];
 
 
 
-    setTimeout(
-        gambar,
-        800
-    );
+document.getElementById("hasil").innerHTML=
+"🏆 "+pemenang+" Terpilih!";
 
 
 
-    if(nama.length===0){
+// mulai waktu 20 menit
 
-        setTimeout(()=>{
-
-            alert(
-            "Semua nama sudah mendapatkan giliran."
-            );
-
-        },1000);
-
-    }
+mulaiTimer();
 
 
-}
 
-}
+nama.splice(
+menang,
+1
+);
+
+
+
+warna.splice(
+menang,
+1
+);
+
+
+
+angle=0;
+
+
+
+setTimeout(
+gambar,
+800
+);
 
 
 
 }
-
 
 
 }
@@ -657,9 +646,14 @@ if(p<1){
 
 requestAnimationFrame(animasi);
 
+
+
 }
 
+
+
 </script>
+
 
 </body>
 
