@@ -597,37 +597,21 @@ requestAnimationFrame(animasi);
 
 }else{
 
-
-
 sedang=false;
 
-
-
-let pemenang =
-nama[menang];
-
-
+let pemenang=nama[menang];
 
 document.getElementById("hasil").innerHTML =
 "🏆 "+pemenang+" Terpilih!";
 
 
-// MULAI TIMER 20 MENIT
-
 mulaiTimer();
 
 
+nama.splice(menang,1);
+warna.splice(menang,1);
 
-nama.splice(
-menang,
-1
-);
-
-
-
-warna.splice(
-menang,
-1
+}
 );
 
 
