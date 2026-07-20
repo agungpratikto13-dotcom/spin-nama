@@ -190,8 +190,12 @@ button:disabled{
 <button id="spinButton" onclick="spin()">
 🎯 SPIN
 </button>
-
-
+<button id="nextButton" onclick="nextPerson()" style="display:none;background:#0984e3;">
+➡️ NEXT (Tidak Merokok)
+</button>
+<button id="smokeButton" onclick="merokok()" style="display:none;background:#d63031;">
+🚬 MEROKOK (20 Menit)
+</button>
 <div id="hasil"></div>
 
 
@@ -247,7 +251,7 @@ let sedang=false;
 
 let timerInterval;
 
-
+let namaTerpilihSekarang="";
 
 // =================
 // GAMBAR RODA
@@ -482,6 +486,67 @@ timer.innerHTML=
 // SPIN
 // =================
 
+function nextPerson(){
+
+    let index=nama.indexOf(namaTerpilihSekarang);
+
+
+    if(index!==-1){
+
+        nama.splice(index,1);
+        warna.splice(index,1);
+
+    }
+
+
+    document.getElementById("hasil").innerHTML=
+    "➡️ "+namaTerpilihSekarang+" Lewat (Tidak Merokok)";
+
+
+    document.getElementById("nextButton").style.display="none";
+
+    document.getElementById("smokeButton").style.display="none";
+
+
+    namaTerpilihSekarang="";
+
+
+    angle=0;
+
+    gambar();
+
+}
+
+
+
+function merokok(){
+
+    let index=nama.indexOf(namaTerpilihSekarang);
+
+
+    if(index!==-1){
+
+        nama.splice(index,1);
+        warna.splice(index,1);
+
+    }
+
+
+    document.getElementById("nextButton").style.display="none";
+
+    document.getElementById("smokeButton").style.display="none";
+
+
+    mulaiTimer();
+
+
+    angle=0;
+
+    gambar();
+
+}
+
+
 
 function spin(){
 
@@ -605,24 +670,14 @@ document.getElementById("hasil").innerHTML=
 "🏆 "+pemenang+" Terpilih!";
 
 
-
-// mulai waktu 20 menit
-
-mulaiTimer();
+namaTerpilihSekarang=pemenang;
 
 
+// tampilkan pilihan
 
-nama.splice(
-menang,
-1
-);
+document.getElementById("nextButton").style.display="inline-block";
 
-
-
-warna.splice(
-menang,
-1
-);
+document.getElementById("smokeButton").style.display="inline-block";
 
 
 
