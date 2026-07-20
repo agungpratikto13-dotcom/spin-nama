@@ -190,6 +190,17 @@ button:disabled{
 <button id="spinButton" onclick="spin()">
 🎯 SPIN
 </button>
+<div id="pilihan" style="display:none;margin-top:15px;">
+    <button id="okeButton" onclick="mulaiMerokok()"
+        style="background:#00b894;">
+        ✅ MEROKOK
+    </button>
+
+    <button id="nextButton" onclick="nextOrang()"
+        style="background:#e17055;">
+        ⏭️ NEXT
+    </button>
+</div>
 
 
 <div id="hasil"></div>
@@ -421,17 +432,6 @@ tombol.disabled=false;
 tombol.innerHTML=
 "🎯 SPIN";
     
-<div id="pilihan" style="display:none;margin-top:15px;">
-    <button id="okeButton" onclick="mulaiMerokok()"
-        style="background:#00b894;">
-        ✅ MEROKOK
-    </button>
-
-    <button id="nextButton" onclick="nextOrang()"
-        style="background:#e17055;">
-        ⏭️ NEXT
-    </button>
-</div>
 
 return;
 
