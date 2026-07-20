@@ -420,7 +420,18 @@ tombol.disabled=false;
 
 tombol.innerHTML=
 "🎯 SPIN";
+    
+<div id="pilihan" style="display:none;margin-top:15px;">
+    <button id="okeButton" onclick="mulaiMerokok()"
+        style="background:#00b894;">
+        ✅ MEROKOK
+    </button>
 
+    <button id="nextButton" onclick="nextOrang()"
+        style="background:#e17055;">
+        ⏭️ NEXT
+    </button>
+</div>
 
 return;
 
@@ -485,7 +496,49 @@ timer.innerHTML=
 
 function spin(){
 
+    function mulaiMerokok(){
 
+    document.getElementById("pilihan").style.display="none";
+
+    nama.splice(indexPemenang,1);
+    warna.splice(indexPemenang,1);
+
+    gambar();
+
+    mulaiTimer();
+
+    document.getElementById("hasil").innerHTML =
+    "🚬 " + namaPemenang + " sedang merokok";
+}
+
+    function nextOrang(){
+
+    document.getElementById("pilihan").style.display="none";
+
+    nama.splice(indexPemenang,1);
+    warna.splice(indexPemenang,1);
+
+    gambar();
+
+    document.getElementById("hasil").innerHTML =
+    "⏭️ Lewati " + namaPemenang;
+
+    setTimeout(function(){
+
+        if(nama.length>0){
+
+            spin();
+
+        }else{
+
+            document.getElementById("hasil").innerHTML =
+            "✅ Semua nama sudah selesai.";
+
+        }
+
+    },700);
+
+}
 if(sedang) return;
 
 
@@ -509,10 +562,7 @@ document.getElementById("hasil").innerHTML="";
 
 
 
-let menang=
-Math.floor(
-Math.random()*nama.length
-);
+indexPemenang = Math.floor(Math.random()*nama.length);
 
 
 
@@ -524,7 +574,7 @@ let arc=
 let target=
 (Math.PI*1.5)
 -
-(menang*arc)
+(indexPemenang*arc)
 -
 (arc/2);
 
@@ -596,53 +646,16 @@ sedang=false;
 
 
 
-let pemenang=
-nama[menang];
+namaPemenang = nama[indexPemenang];
 
+document.getElementById("hasil").innerHTML =
+"🏆 " + namaPemenang + " Terpilih!";
 
-
-document.getElementById("hasil").innerHTML=
-"🏆 "+pemenang+" Terpilih!";
-
-
-
-// mulai waktu 20 menit
-
-mulaiTimer();
-
-
-
-nama.splice(
-menang,
-1
-);
-
-
-
-warna.splice(
-menang,
-1
-);
-
-
-
-angle=0;
-
-
-
-setTimeout(
-gambar,
-800
-);
+document.getElementById("pilihan").style.display = "block";
 
 
 
 }
-
-
-}
-
-
 
 requestAnimationFrame(animasi);
 
