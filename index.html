@@ -193,7 +193,9 @@ button:disabled{
 <button id="nextButton" onclick="nextPerson()" style="display:none;background:#0984e3;">
 ➡️ NEXT (Tidak Merokok)
 </button>
-    
+<button id="restoreButton" onclick="kembalikanNama()" style="display:none;background:#6c5ce7;">
+🔄 Tambah Nama Kembali
+</button>
 <button id="smokeButton" onclick="merokok()" style="display:none;background:#d63031;">
 🚬 MEROKOK (20 Menit)
 </button>
@@ -255,6 +257,8 @@ let timerInterval;
 
 let namaTerpilihSekarang="";
 
+ let namaKeluar=[];
+    
 // =================
 // GAMBAR RODA
 // =================
@@ -495,10 +499,15 @@ function nextPerson(){
 
     if(index!==-1){
 
-        nama.splice(index,1);
-        warna.splice(index,1);
+    namaKeluar.push({
+        nama:nama[index],
+        warna:warna[index]
+    });
 
-    }
+    nama.splice(index,1);
+    warna.splice(index,1);
+
+}
 
 
     document.getElementById("hasil").innerHTML=
@@ -513,9 +522,11 @@ function nextPerson(){
     namaTerpilihSekarang="";
 
 
-    angle=0;
+   angle=0;
 
-    gambar();
+  document.getElementById("restoreButton").style.display="inline-block";
+
+  gambar();
 
 }
 
@@ -549,7 +560,35 @@ function merokok(){
 
 }
 
+function kembalikanNama(){
 
+    if(namaKeluar.length===0){
+
+        alert("Tidak ada nama yang bisa dikembalikan");
+
+        return;
+
+    }
+
+
+    namaKeluar.forEach(item=>{
+
+        nama.push(item.nama);
+        warna.push(item.warna);
+
+    });
+
+
+    namaKeluar=[];
+
+    document.getElementById("restoreButton").style.display="none";
+
+    gambar();
+
+    document.getElementById("hasil").innerHTML=
+    "✅ Semua nama dikembalikan";
+
+}
 
 function spin(){
 
