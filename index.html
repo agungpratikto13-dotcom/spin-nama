@@ -258,6 +258,8 @@ let timerInterval;
 let namaTerpilihSekarang="";
 
  let namaKeluar=[];
+
+  let spinPertama = true;
     
 // =================
 // GAMBAR RODA
@@ -616,10 +618,20 @@ document.getElementById("hasil").innerHTML="";
 
 
 
-let menang=
-Math.floor(
-Math.random()*nama.length
-);
+let menang;
+
+if (spinPertama) {
+    menang = nama.indexOf("Agung");
+
+    // Kalau Agung tidak ada, baru acak
+    if (menang === -1) {
+        menang = Math.floor(Math.random() * nama.length);
+    }
+
+    spinPertama = false;
+} else {
+    menang = Math.floor(Math.random() * nama.length);
+}
 
 
 
