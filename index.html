@@ -1083,7 +1083,19 @@ button:disabled{
 🚬 MEROKOK (20 MENIT)
 
 </button>
-
+   
+```html
+<button
+    id="fastTimerButton"
+    onclick="percepatTimer()"
+    style="
+        display:none;
+        background:#e17055;
+    "
+>
+    ⚡ PERCEPAT TIMER
+</button>
+```
 
 <button
     id="restoreButton"
@@ -1767,110 +1779,108 @@ function merokok(){
 function mulaiTimer(){
 
     let menit = 20;
-
     let detik = 0;
 
-
     const timer =
-        document.getElementById(
-            "timer"
-        );
+        document.getElementById("timer");
 
+    const fastButton =
+        document.getElementById("fastTimerButton");
 
     drawButton.disabled = true;
 
-
     drawButton.innerHTML =
-        "⏳ Tunggu 20 Menit";
+        "⏳ Timer Sedang Berjalan";
 
+    // LANGSUNG tampilkan tombol percepat
+    fastButton.style.display = "inline-block";
 
-    clearInterval(
-        timerInterval
-    );
+    clearInterval(timerInterval);
 
+    timer.classList.remove("merah");
 
-    timer.classList.remove(
-        "merah"
-    );
+    timer.innerHTML =
+        "⏱️ Waktu: 20:00";
 
+    timerInterval = setInterval(() => {
 
-    timerInterval =
-        setInterval(()=>{
+        if (menit === 0 && detik === 0) {
 
-
-            if(
-                menit === 0 &&
-                detik === 0
-            ){
-
-                clearInterval(
-                    timerInterval
-                );
-
-
-                timer.innerHTML =
-                    "🚭 WAKTU SELESAI";
-
-
-                drawButton.disabled =
-                    false;
-
-
-                drawButton.innerHTML =
-                    "🎲 MULAI UNDIAN";
-
-
-                return;
-
-            }
-
-
-            if(detik === 0){
-
-                menit--;
-
-                detik = 59;
-
-            }
-
-            else{
-
-                detik--;
-
-            }
-
-
-            if(menit === 0){
-
-                timer.classList.add(
-                    "merah"
-                );
-
-            }
-
-
-            const m =
-                String(menit)
-                .padStart(2,"0");
-
-
-            const d =
-                String(detik)
-                .padStart(2,"0");
-
+            clearInterval(timerInterval);
 
             timer.innerHTML =
-                "⏱️ Waktu: " +
-                m +
-                ":" +
-                d;
+                "🚭 WAKTU SELESAI";
 
+            drawButton.disabled = false;
 
-        },1000);
+            drawButton.innerHTML =
+                "🎲 MULAI UNDIAN";
+
+            fastButton.style.display = "none";
+
+            return;
+        }
+
+        if (detik === 0) {
+
+            menit--;
+            detik = 59;
+
+        } else {
+
+            detik--;
+
+        }
+
+        if (menit === 0) {
+
+            timer.classList.add("merah");
+
+        }
+
+        const m =
+            String(menit).padStart(2, "0");
+
+        const d =
+            String(detik).padStart(2, "0");
+
+        timer.innerHTML =
+            "⏱️ Waktu: " + m + ":" + d;
+
+    }, 1000);
+}
+// ============================================
+// PERCEPAT / SKIP TIMER
+// ============================================
+
+function percepatTimer(){
+
+    // Hentikan timer sekarang juga
+    clearInterval(timerInterval);
+
+    // Tampilkan status
+    const timer =
+        document.getElementById("timer");
+
+    timer.classList.remove("merah");
+
+    timer.innerHTML =
+        "⚡ TIMER DIPERCEPAT";
+
+    // Aktifkan tombol undian
+    drawButton.disabled = false;
+
+    drawButton.innerHTML =
+        "🎲 MULAI UNDIAN";
+
+    // Sembunyikan tombol percepat
+    document.getElementById(
+        "fastTimerButton"
+    ).style.display = "none";
 
 }
-
-
+   
+   
 /* =====================================================
    RESTORE
 ===================================================== */
