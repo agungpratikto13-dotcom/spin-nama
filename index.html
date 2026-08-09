@@ -1,9 +1,7 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,109 +9,109 @@
 
 <style>
 
-/* =====================================================
-   DASAR
-===================================================== */
+/* =========================================================
+   RESET & DASAR
+========================================================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-
-    min-height:100vh;
-
-    background:url("background.jpg") center/cover no-repeat fixed;
-
-    font-family:Arial,sans-serif;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-
-    color:white;
-
-    overflow-x:hidden;
-
+html,
+body {
+    min-height: 100%;
 }
 
-body::before{
+body {
+    min-height: 100vh;
 
-    content:"";
+    background:
+        url("background.jpg")
+        center / cover
+        no-repeat
+        fixed;
 
-    position:fixed;
+    font-family: Arial, sans-serif;
 
-    inset:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    background:rgba(0,0,0,.60);
+    color: white;
 
-    z-index:-1;
+    overflow-x: hidden;
 
+    position: relative;
+}
+
+/* Lapisan gelap background */
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.60);
+
+    z-index: -1;
 }
 
 
-/* =====================================================
+/* =========================================================
    JUDUL
-===================================================== */
+========================================================= */
 
-h1{
+h1 {
+    margin: 18px 12px 12px;
 
-    margin-top:18px;
-    margin-bottom:12px;
+    text-align: center;
 
-    text-align:center;
+    color: #FFD700;
 
-    color:#FFD700;
-
-    font-size:clamp(20px,4vw,34px);
+    font-size: clamp(20px, 4vw, 34px);
 
     text-shadow:
         2px 3px 5px #000,
         0 0 15px #FFD700;
-
 }
 
 
-/* =====================================================
+/* =========================================================
    MESIN
-===================================================== */
+========================================================= */
 
-.machine{
+.machine {
+    width: min(94vw, 520px);
 
-    width:min(94vw,520px);
+    position: relative;
 
-    position:relative;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
-/* =====================================================
-   TABUNG
-===================================================== */
+/* =========================================================
+   TABUNG / GLASS
+========================================================= */
 
-.glass{
+.glass {
+    width: 390px;
+    max-width: 90vw;
 
-    width:390px;
-    max-width:90vw;
+    height: 300px;
 
-    height:300px;
+    position: relative;
 
-    position:relative;
+    overflow: hidden;
 
-    overflow:hidden;
+    border: 7px solid #FFD700;
 
-    border:7px solid #FFD700;
-
-    border-radius:45px 45px 30px 30px;
+    border-radius: 45px 45px 30px 30px;
 
     background:
-
         linear-gradient(
             90deg,
             rgba(255,255,255,.25),
@@ -121,37 +119,29 @@ h1{
             rgba(255,255,255,.04) 80%,
             rgba(255,255,255,.22)
         ),
-
         rgba(10,20,30,.75);
 
     box-shadow:
-
         inset 0 0 35px rgba(255,255,255,.15),
-
         inset 0 -20px 30px rgba(0,0,0,.5),
-
         0 0 15px #FFD700,
-
         0 0 40px rgba(255,215,0,.35);
-
 }
 
 
-/* kilau kaca */
+/* Kilau kaca */
+.glass::before {
+    content: "";
 
-.glass::before{
+    position: absolute;
 
-    content:"";
+    top: 10px;
+    left: 20px;
 
-    position:absolute;
+    width: 50px;
+    height: 250px;
 
-    top:10px;
-    left:20px;
-
-    width:50px;
-    height:250px;
-
-    border-radius:50%;
+    border-radius: 50%;
 
     background:
         linear-gradient(
@@ -160,111 +150,95 @@ h1{
             rgba(255,255,255,0)
         );
 
-    transform:rotate(5deg);
+    transform: rotate(5deg);
 
-    pointer-events:none;
+    pointer-events: none;
 
-    z-index:30;
-
+    z-index: 30;
 }
 
 
-/* =====================================================
-   BOLA
-===================================================== */
+/* =========================================================
+   BOLA PESERTA
+========================================================= */
 
-.ball{
+.ball {
+    width: 52px;
+    height: 52px;
 
-    width:52px;
-    height:52px;
+    border-radius: 50%;
 
-    border-radius:50%;
+    position: absolute;
 
-    position:absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    display:flex;
+    padding: 4px;
 
-    align-items:center;
-    justify-content:center;
+    text-align: center;
 
-    padding:4px;
+    font-size: 11px;
+    font-weight: bold;
 
-    text-align:center;
+    color: #111;
 
-    font-size:11px;
-
-    font-weight:bold;
-
-    color:#111;
-
-    border:2px solid rgba(255,255,255,.8);
+    border: 2px solid rgba(255,255,255,.8);
 
     box-shadow:
-
         inset -9px -11px 14px rgba(0,0,0,.32),
-
         inset 8px 8px 12px rgba(255,255,255,.55),
-
         0 6px 8px rgba(0,0,0,.55);
 
-    z-index:5;
+    z-index: 5;
 
     transition:
         left .28s ease,
         top .28s ease;
-
 }
 
 
-/* kilau bola */
+/* Kilau bola */
+.ball::before {
+    content: "";
 
-.ball::before{
+    position: absolute;
 
-    content:"";
+    width: 13px;
+    height: 13px;
 
-    position:absolute;
+    border-radius: 50%;
 
-    width:13px;
-    height:13px;
+    top: 7px;
+    left: 9px;
 
-    border-radius:50%;
-
-    top:7px;
-    left:9px;
-
-    background:rgba(255,255,255,.85);
-
+    background: rgba(255,255,255,.85);
 }
 
 
-/* =====================================================
+/* =========================================================
    SELUNCURAN
-===================================================== */
+========================================================= */
 
-.slide-area{
+.slide-area {
+    width: 320px;
+    height: 230px;
 
-    width:320px;
-
-    height:230px;
-
-    position:relative;
-
+    position: relative;
 }
 
 
-/* kiri */
+/* Kiri */
+.slide-left {
+    position: absolute;
 
-.slide-left{
+    left: 35px;
+    top: 0;
 
-    position:absolute;
+    width: 24px;
+    height: 210px;
 
-    left:35px;
-    top:0;
-
-    width:24px;
-    height:210px;
-
-    border-radius:20px;
+    border-radius: 20px;
 
     background:
         linear-gradient(
@@ -274,28 +248,24 @@ h1{
             #777
         );
 
-    transform:rotate(25deg);
+    transform: rotate(25deg);
+    transform-origin: top;
 
-    transform-origin:top;
-
-    box-shadow:3px 5px 8px #000;
-
+    box-shadow: 3px 5px 8px #000;
 }
 
 
-/* kanan */
+/* Kanan */
+.slide-right {
+    position: absolute;
 
-.slide-right{
+    right: 35px;
+    top: 0;
 
-    position:absolute;
+    width: 24px;
+    height: 210px;
 
-    right:35px;
-    top:0;
-
-    width:24px;
-    height:210px;
-
-    border-radius:20px;
+    border-radius: 20px;
 
     background:
         linear-gradient(
@@ -305,31 +275,26 @@ h1{
             #777
         );
 
-    transform:rotate(-25deg);
+    transform: rotate(-25deg);
+    transform-origin: top;
 
-    transform-origin:top;
-
-    box-shadow:-3px 5px 8px #000;
-
+    box-shadow: -3px 5px 8px #000;
 }
 
 
-/* bawah */
+/* Bawah */
+.slide-bottom {
+    position: absolute;
 
-.slide-bottom{
+    bottom: 15px;
+    left: 50%;
 
-    position:absolute;
+    transform: translateX(-50%);
 
-    bottom:15px;
+    width: 110px;
+    height: 30px;
 
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:110px;
-    height:30px;
-
-    border-radius:15px;
+    border-radius: 15px;
 
     background:
         linear-gradient(
@@ -339,46 +304,41 @@ h1{
 
     box-shadow:
         0 5px 10px #000;
-
 }
 
 
-/* =====================================================
+/* =========================================================
    BOLA HASIL
-===================================================== */
+========================================================= */
 
-.result-ball{
+.result-ball {
+    position: absolute;
 
-    position:absolute;
+    bottom: -2px;
+    left: 50%;
 
-    bottom:-2px;
+    transform: translateX(-50%);
 
-    left:50%;
+    width: 115px;
+    height: 115px;
 
-    transform:translateX(-50%);
+    border-radius: 50%;
 
-    width:115px;
-    height:115px;
+    display: none;
 
-    border-radius:50%;
+    justify-content: center;
+    align-items: center;
 
-    display:none;
+    text-align: center;
 
-    justify-content:center;
-    align-items:center;
+    color: #111;
 
-    text-align:center;
+    font-size: 13px;
+    font-weight: bold;
 
-    color:#111;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-    cursor:pointer;
+    cursor: pointer;
 
     background:
-
         radial-gradient(
             circle at 30% 22%,
             #fff 0%,
@@ -387,129 +347,111 @@ h1{
             #8b0000 100%
         );
 
-    border:6px solid #FFD700;
+    border: 6px solid #FFD700;
 
     box-shadow:
-
         inset -15px -17px 20px rgba(0,0,0,.4),
-
         inset 10px 10px 15px rgba(255,255,255,.55),
-
         0 0 15px #FFD700,
-
         0 0 40px rgba(255,215,0,.65),
-
         0 12px 20px rgba(0,0,0,.7);
 
-    z-index:50;
-
+    z-index: 50;
 }
 
-
-.result-ball.show{
-
-    display:flex;
+.result-ball.show {
+    display: flex;
 
     animation:
-        bolaKeluar .8s cubic-bezier(.2,1.4,.4,1),
-        bolaGoyang 1s 1s infinite alternate;
-
+        bolaKeluar .8s cubic-bezier(.2,1.4,.4,1) forwards;
 }
 
 
-@keyframes bolaKeluar{
+/* Animasi keluar */
+@keyframes bolaKeluar {
 
-    0%{
-
+    0% {
         transform:
-            translate(-50%,-160px)
+            translate(-50%, -160px)
             scale(.2);
 
-        opacity:0;
-
+        opacity: 0;
     }
 
-    70%{
-
+    70% {
         transform:
-            translate(-50%,10px)
+            translate(-50%, 10px)
             scale(1.12);
 
-        opacity:1;
-
+        opacity: 1;
     }
 
-    100%{
-
+    100% {
         transform:
-            translate(-50%,0)
+            translate(-50%, 0)
             scale(1);
-
     }
-
 }
 
 
-@keyframes bolaGoyang{
+/* Animasi goyang dipisahkan */
+.result-ball.goyang {
+    animation: bolaGoyang 1s infinite alternate ease-in-out;
+}
 
-    from{
+@keyframes bolaGoyang {
 
+    from {
         transform:
-            translate(-50%,0)
+            translateX(-50%)
             rotate(-5deg);
-
     }
 
-    to{
-
+    to {
         transform:
-            translate(-50%,0)
+            translateX(-50%)
             rotate(5deg);
-
     }
-
 }
 
 
-/* kilau */
+/* Kilau bola hasil */
+.result-ball::before {
+    content: "";
 
-.result-ball::before{
+    position: absolute;
 
-    content:"";
+    width: 23px;
+    height: 23px;
 
-    position:absolute;
+    border-radius: 50%;
 
-    width:23px;
-    height:23px;
+    top: 12px;
+    left: 17px;
 
-    border-radius:50%;
+    background: white;
 
-    top:12px;
-    left:17px;
-
-    background:white;
-
-    opacity:.9;
-
+    opacity: .9;
 }
 
 
-/* =====================================================
+/* =========================================================
    OVERLAY PEMENANG
-===================================================== */
+========================================================= */
 
-.winner-overlay{
+.winner-overlay {
+    position: fixed;
 
-    position:fixed;
+    inset: 0;
 
-    inset:0;
+    display: none;
 
-    display:none;
+    justify-content: center;
+    align-items: center;
 
-    justify-content:center;
-    align-items:center;
+    flex-direction: column;
 
-    flex-direction:column;
+    padding: 20px;
 
     background:
         radial-gradient(
@@ -518,41 +460,36 @@ h1{
             rgba(0,0,0,.88) 65%
         );
 
-    z-index:999;
-
+    z-index: 999;
 }
 
-
-.winner-overlay.show{
-
-    display:flex;
+.winner-overlay.show {
+    display: flex;
 
     animation:
         munculOverlay .4s ease;
-
 }
 
 
-@keyframes munculOverlay{
+@keyframes munculOverlay {
 
-    from{
-        opacity:0;
+    from {
+        opacity: 0;
     }
 
-    to{
-        opacity:1;
+    to {
+        opacity: 1;
     }
-
 }
 
 
-.winner-small{
+.winner-small {
+    color: #FFD700;
 
-    color:#FFD700;
+    font-size: 22px;
+    font-weight: bold;
 
-    font-size:22px;
-
-    font-weight:bold;
+    text-align: center;
 
     text-shadow:
         0 0 10px #FFD700,
@@ -560,47 +497,44 @@ h1{
 
     animation:
         turun .5s ease;
-
 }
 
 
-.winner-name{
+.winner-name {
+    margin: 15px 20px;
 
-    margin:15px 20px;
+    max-width: 95vw;
 
-    text-align:center;
+    text-align: center;
 
-    color:white;
+    color: white;
 
-    font-size:clamp(45px,12vw,90px);
+    font-size: clamp(45px, 12vw, 90px);
 
-    font-weight:900;
+    font-weight: 900;
 
-    text-transform:uppercase;
+    text-transform: uppercase;
+
+    word-break: break-word;
 
     text-shadow:
-
         0 0 8px white,
-
         0 0 20px #FFD700,
-
         0 0 40px #FFD700,
-
         4px 5px 5px #000;
 
     animation:
         zoomNama .8s cubic-bezier(.17,1.4,.4,1);
-
 }
 
 
-.winner-text{
+.winner-text {
+    color: #FFD700;
 
-    color:#FFD700;
+    font-size: 32px;
+    font-weight: bold;
 
-    font-size:32px;
-
-    font-weight:bold;
+    text-align: center;
 
     text-shadow:
         0 0 15px #FFD700,
@@ -608,413 +542,375 @@ h1{
 
     animation:
         munculText .8s .3s both;
-
 }
 
 
-.winner-close{
+.winner-close {
+    margin-top: 30px;
 
-    margin-top:30px;
+    padding: 12px 30px;
 
-    padding:12px 30px;
+    border: none;
 
-    border:none;
+    border-radius: 12px;
 
-    border-radius:12px;
+    background: #00b894;
 
-    background:#00b894;
+    color: white;
 
-    color:white;
+    font-size: 18px;
+    font-weight: bold;
 
-    font-size:18px;
-
-    font-weight:bold;
-
-    cursor:pointer;
+    cursor: pointer;
 
     box-shadow:
         0 5px 15px black;
-
 }
 
 
-@keyframes zoomNama{
+@keyframes zoomNama {
 
-    0%{
-
+    0% {
         transform:
             scale(.1)
             rotate(-8deg);
 
-        opacity:0;
-
+        opacity: 0;
     }
 
-    60%{
-
+    60% {
         transform:
             scale(1.2)
             rotate(2deg);
 
-        opacity:1;
-
+        opacity: 1;
     }
 
-    100%{
-
+    100% {
         transform:
             scale(1)
             rotate(0);
-
     }
-
 }
 
 
-@keyframes turun{
+@keyframes turun {
 
-    from{
-
+    from {
         transform:
             translateY(-50px);
 
-        opacity:0;
-
+        opacity: 0;
     }
 
-    to{
-
+    to {
         transform:
             translateY(0);
 
-        opacity:1;
-
+        opacity: 1;
     }
-
 }
 
 
-@keyframes munculText{
+@keyframes munculText {
 
-    from{
-
+    from {
         transform:
             scale(.3);
 
-        opacity:0;
-
+        opacity: 0;
     }
 
-    to{
-
+    to {
         transform:
             scale(1);
 
-        opacity:1;
-
+        opacity: 1;
     }
-
 }
 
 
-/* =====================================================
+/* =========================================================
    CONFETTI
-===================================================== */
+========================================================= */
 
-.confetti{
+.confetti {
+    position: fixed;
 
-    position:fixed;
+    width: 10px;
+    height: 18px;
 
-    width:10px;
-    height:18px;
+    top: -30px;
 
-    top:-30px;
+    z-index: 1001;
 
-    z-index:1001;
-
-    pointer-events:none;
+    pointer-events: none;
 
     animation:
         confettiJatuh
         3s
         linear
         forwards;
-
 }
 
 
-@keyframes confettiJatuh{
+@keyframes confettiJatuh {
 
-    0%{
-
+    0% {
         transform:
             translateY(0)
             rotate(0);
 
-        opacity:1;
-
+        opacity: 1;
     }
 
-    100%{
-
+    100% {
         transform:
             translateY(110vh)
             rotate(720deg);
 
-        opacity:.1;
-
+        opacity: .1;
     }
-
 }
 
 
-/* =====================================================
+/* =========================================================
    TOMBOL
-===================================================== */
+========================================================= */
 
-button{
+button {
+    margin-top: 12px;
 
-    margin-top:12px;
+    padding: 12px 24px;
 
-    padding:12px 24px;
+    border: none;
 
-    border:none;
+    border-radius: 11px;
 
-    border-radius:11px;
+    color: white;
 
-    color:white;
+    font-size: 18px;
+    font-weight: bold;
 
-    font-size:18px;
-
-    font-weight:bold;
-
-    cursor:pointer;
+    cursor: pointer;
 
     box-shadow:
         0 5px 10px rgba(0,0,0,.5);
 
-    transition:.2s;
-
+    transition:
+        transform .2s,
+        opacity .2s;
 }
 
 
-button:hover{
-
-    transform:scale(1.04);
-
+button:hover {
+    transform: scale(1.04);
 }
 
 
-button:active{
-
-    transform:scale(.96);
-
+button:active {
+    transform: scale(.96);
 }
 
 
-button:disabled{
+button:disabled {
+    background: #555 !important;
 
-    background:#555 !important;
+    cursor: not-allowed;
 
-    cursor:not-allowed;
+    transform: none;
 
-    transform:none;
-
+    opacity: .7;
 }
 
 
-#drawButton{
-
-    background:#00b894;
-
+#drawButton {
+    background: #00b894;
 }
 
 
-#nextButton{
+#nextButton {
+    display: none;
 
-    display:none;
-
-    background:#0984e3;
-
+    background: #0984e3;
 }
 
 
-#smokeButton{
+#smokeButton {
+    display: none;
 
-    display:none;
-
-    background:#d63031;
-
+    background: #d63031;
 }
 
 
-#restoreButton{
+#fastTimerButton {
+    display: none;
 
-    display:none;
-
-    background:#6c5ce7;
-
+    background: #e17055;
 }
 
 
-/* =====================================================
+#restoreButton {
+    display: none;
+
+    background: #6c5ce7;
+}
+
+
+/* =========================================================
    TEKS
-===================================================== */
+========================================================= */
 
-#petunjuk{
+#petunjuk {
+    min-height: 25px;
 
-    min-height:25px;
+    margin-top: 3px;
 
-    margin-top:3px;
+    padding: 0 15px;
 
-    text-align:center;
+    text-align: center;
 
-    font-size:16px;
+    font-size: 16px;
+    font-weight: bold;
 
-    font-weight:bold;
-
-    text-shadow:2px 2px 4px black;
-
+    text-shadow:
+        2px 2px 4px black;
 }
 
 
-#hasil{
+#hasil {
+    min-height: 42px;
 
-    min-height:42px;
+    margin-top: 12px;
 
-    margin-top:12px;
+    padding: 0 15px;
 
-    text-align:center;
+    text-align: center;
 
-    font-size:28px;
+    font-size: 28px;
+    font-weight: bold;
 
-    font-weight:bold;
-
-    color:white;
+    color: white;
 
     text-shadow:
         2px 2px 5px black,
         0 0 12px white;
-
 }
 
 
-/* =====================================================
+/* =========================================================
    TIMER
-===================================================== */
+========================================================= */
 
-#timer{
+#timer {
+    margin-top: 8px;
 
-    margin-top:8px;
+    font-size: 31px;
+    font-weight: bold;
 
-    font-size:31px;
-
-    font-weight:bold;
-
-    color:#00ffcc;
+    color: #00ffcc;
 
     text-shadow:
         2px 2px 5px black,
         0 0 10px #00ffcc;
-
 }
 
 
-#timer.merah{
-
-    color:red;
+#timer.merah {
+    color: red;
 
     text-shadow:
         2px 2px 5px black,
         0 0 12px red;
-
 }
 
 
-/* =====================================================
+/* =========================================================
    CREATED BY
-===================================================== */
+========================================================= */
 
-.created-by{
+.created-by {
+    margin: 15px 0 20px;
 
-    margin:15px 0 20px;
+    color: #FFD700;
 
-    color:#FFD700;
-
-    font-size:16px;
-
-    font-weight:bold;
+    font-size: 16px;
+    font-weight: bold;
 
     text-shadow:
         2px 2px 5px black,
         0 0 8px #FFD700;
-
 }
 
 
-/* =====================================================
+/* =========================================================
    MOBILE
-===================================================== */
+========================================================= */
 
-@media(max-width:450px){
+@media (max-width: 450px) {
 
-    .glass{
-
-        height:270px;
-
+    h1 {
+        margin-top: 12px;
     }
 
-    .ball{
-
-        width:45px;
-        height:45px;
-
-        font-size:9px;
-
+    .glass {
+        height: 270px;
     }
 
-    .slide-area{
+    .ball {
+        width: 45px;
+        height: 45px;
 
-        width:280px;
-
+        font-size: 9px;
     }
 
-    .result-ball{
-
-        width:100px;
-        height:100px;
-
+    .slide-area {
+        width: 280px;
     }
 
-    #hasil{
-
-        font-size:23px;
-
+    .result-ball {
+        width: 100px;
+        height: 100px;
     }
 
-    #timer{
-
-        font-size:27px;
-
+    #hasil {
+        font-size: 23px;
     }
 
+    #timer {
+        font-size: 27px;
+    }
+
+    button {
+        max-width: 92vw;
+    }
+
+    .winner-text {
+        font-size: 26px;
+    }
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
+<!-- =======================================================
+     JUDUL
+======================================================= -->
+
 <h1>
-🚭 BATAS MEROKOK HANYA 20 MENIT YA ABANG ABANG 🚭
+    🚭 BATAS MEROKOK HANYA 20 MENIT YA ABANG ABANG 🚭
 </h1>
 
 
-<div class="machine">
+<!-- =======================================================
+     MESIN UNDIAN
+======================================================= -->
 
+<div class="machine">
 
     <div
         class="glass"
@@ -1038,30 +934,45 @@ button:disabled{
         id="resultBall"
         onclick="bukaHasil()"
     >
-
         👆<br>
         TEKAN<br>
         BOLA
-
     </div>
 
 </div>
 
 
+<!-- =======================================================
+     INFORMASI
+======================================================= -->
+
 <div id="petunjuk">
-
-🎲 Tekan tombol untuk mengundi
-
+    🎲 Tekan tombol untuk mengundi
 </div>
 
+
+<div id="hasil">
+</div>
+
+
+<!-- =======================================================
+     TIMER
+======================================================= -->
+
+<div id="timer">
+    20:00
+</div>
+
+
+<!-- =======================================================
+     TOMBOL
+======================================================= -->
 
 <button
     id="drawButton"
     onclick="mulaiUndian()"
 >
-
-🎲 MULAI UNDIAN
-
+    🎲 MULAI UNDIAN
 </button>
 
 
@@ -1069,9 +980,7 @@ button:disabled{
     id="nextButton"
     onclick="nextPerson()"
 >
-
-➡️ NEXT (Tidak Merokok)
-
+    ➡️ NEXT (Tidak Merokok)
 </button>
 
 
@@ -1079,54 +988,36 @@ button:disabled{
     id="smokeButton"
     onclick="merokok()"
 >
-
-🚬 MEROKOK (20 MENIT)
-
+    🚬 MEROKOK (20 MENIT)
 </button>
-   
-```html
+
+
 <button
     id="fastTimerButton"
     onclick="percepatTimer()"
-    style="
-        display:none;
-        background:#e17055;
-    "
 >
     ⚡ PERCEPAT TIMER
 </button>
-```
+
 
 <button
     id="restoreButton"
     onclick="kembalikanNama()"
 >
-
-🔄 Tambah Nama Kembali
-
+    🔄 Tambah Nama Kembali
 </button>
 
 
-<div id="hasil"></div>
-
-
-<div id="timer">
-
-⏱️ Waktu: 20:00
-
-</div>
-
-
 <div class="created-by">
-
-Created by Agung
-
+    ⏱️ Waktu: 20:00
+    <br>
+    Created by Agung
 </div>
 
 
-<!-- ==================================================
-     OVERLAY PEMENANG
-================================================== -->
+<!-- =======================================================
+     POPUP PEMENANG
+======================================================= -->
 
 <div
     class="winner-overlay"
@@ -1137,15 +1028,17 @@ Created by Agung
         🎉 HASIL UNDIAN 🎉
     </div>
 
+
     <div
         class="winner-name"
         id="winnerName"
-    >
-    </div>
+    ></div>
+
 
     <div class="winner-text">
         🏆 TERPILIH! 🏆
     </div>
+
 
     <button
         class="winner-close"
@@ -1157,804 +1050,820 @@ Created by Agung
 </div>
 
 
-
 <script>
 
-/* =====================================================
-   DATA
-===================================================== */
+/* =========================================================
+   DAFTAR NAMA
+========================================================= */
 
-let nama = [
+/*
+   GANTI NAMA-NAMA DI BAWAH INI DENGAN PESERTA ANDA.
 
+   Contoh:
+
+   const daftarNamaAwal = [
+       "Agung",
+       "Budi",
+       "Candra",
+       "Dedi",
+       "Eko"
+   ];
+*/
+
+const daftarNamaAwal = [
     "Agung",
-    "Kojek",
-    "Tio",
-    "Baim",
-    "Dafa",
     "Nanda",
-    "Aji",
-    "Roy"
-
+    "Dafa",
+    "Tio",
+    "Kojek",
+    "Ibra",
+    "Roy",
+    "Aji"
 ];
 
 
-let warna = [
+/* =========================================================
+   VARIABEL
+========================================================= */
 
+let namaTersedia = [...daftarNamaAwal];
+
+let namaTerpilih = null;
+
+let namaTerakhir = null;
+
+let sedangUndian = false;
+
+let timerInterval = null;
+
+let waktuTersisa = 20 * 60;
+
+
+/* =========================================================
+   ELEMEN HTML
+========================================================= */
+
+const glass = document.getElementById("glass");
+
+const resultBall =
+    document.getElementById("resultBall");
+
+const winnerOverlay =
+    document.getElementById("winnerOverlay");
+
+const winnerName =
+    document.getElementById("winnerName");
+
+const petunjuk =
+    document.getElementById("petunjuk");
+
+const hasil =
+    document.getElementById("hasil");
+
+const timerElement =
+    document.getElementById("timer");
+
+const drawButton =
+    document.getElementById("drawButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const smokeButton =
+    document.getElementById("smokeButton");
+
+const fastTimerButton =
+    document.getElementById("fastTimerButton");
+
+const restoreButton =
+    document.getElementById("restoreButton");
+
+
+/* =========================================================
+   WARNA BOLA
+========================================================= */
+
+const warnaBola = [
     "#ff7675",
     "#74b9ff",
     "#55efc4",
     "#ffeaa7",
     "#a29bfe",
     "#fd79a8",
+    "#fab1a0",
     "#81ecec",
-    "#fab1a0"
-
+    "#fdcb6e"
 ];
 
 
-/* =====================================================
-   VARIABLE
-===================================================== */
+/* =========================================================
+   MEMBUAT BOLA
+========================================================= */
 
-let sedang = false;
-
-let pemenangSementara = "";
-
-let namaTerpilihSekarang = "";
-
-let namaKeluar = [];
-
-let timerInterval;
-
-let gerakanTimer = null;
-
-
-/* =====================================================
-   ELEMENT
-===================================================== */
-
-const glass =
-    document.getElementById("glass");
-
-const resultBall =
-    document.getElementById("resultBall");
-
-const drawButton =
-    document.getElementById("drawButton");
-
-
-/* =====================================================
-   GAMBAR BOLA
-===================================================== */
-
-function gambarBola(){
+function buatBola() {
 
     glass.innerHTML = "";
 
-
-    if(nama.length === 0){
-
-        glass.innerHTML = `
-
-            <div style="
-                width:100%;
-                text-align:center;
-                padding-top:125px;
-                color:#FFD700;
-                font-size:24px;
-                font-weight:bold;
-                text-shadow:0 0 10px #FFD700;
-            ">
-
-                SEMUA NAMA HABIS
-
-            </div>
-
-        `;
-
+    if (namaTersedia.length === 0) {
         return;
-
     }
 
-
-    nama.forEach((orang,index)=>{
+    namaTersedia.forEach((nama, index) => {
 
         const ball =
             document.createElement("div");
 
-
         ball.className = "ball";
 
+        ball.textContent = nama;
 
-        ball.textContent = orang;
-
+        ball.dataset.nama = nama;
 
         ball.style.background =
+            warnaBola[
+                index % warnaBola.length
+            ];
 
-            `radial-gradient(
-                circle at 30% 22%,
-                #ffffff 0%,
-                ${warna[index]} 18%,
-                ${warna[index]} 65%,
-                #333 100%
-            )`;
-
-
+        /* Posisi awal acak */
         const maxX =
-            Math.max(
-                5,
-                glass.clientWidth - 60
-            );
-
+            Math.max(20, glass.clientWidth - 65);
 
         const maxY =
-            Math.max(
-                5,
-                glass.clientHeight - 60
-            );
-
+            Math.max(20, glass.clientHeight - 65);
 
         ball.style.left =
             Math.random() * maxX + "px";
 
-
         ball.style.top =
             Math.random() * maxY + "px";
 
-
         glass.appendChild(ball);
-
     });
-
 }
 
 
-/* =====================================================
-   GERAKAN BOLA
-===================================================== */
+/* =========================================================
+   GERAKKAN BOLA
+========================================================= */
 
-function mulaiGerakanBola(){
+function gerakkanBola() {
 
-    const balls =
+    const bola =
         document.querySelectorAll(".ball");
 
+    bola.forEach(ball => {
 
-    if(gerakanTimer){
+        const maxX =
+            Math.max(20, glass.clientWidth - 65);
 
-        clearInterval(
-            gerakanTimer
-        );
+        const maxY =
+            Math.max(20, glass.clientHeight - 65);
 
-    }
+        ball.style.left =
+            Math.random() * maxX + "px";
 
-
-    gerakanTimer =
-        setInterval(()=>{
-
-            if(!sedang) return;
-
-
-            balls.forEach(ball=>{
-
-                const maxX =
-                    Math.max(
-                        5,
-                        glass.clientWidth - 60
-                    );
-
-
-                const maxY =
-                    Math.max(
-                        5,
-                        glass.clientHeight - 60
-                    );
-
-
-                ball.style.left =
-                    Math.random() * maxX + "px";
-
-
-                ball.style.top =
-                    Math.random() * maxY + "px";
-
-            });
-
-        },260);
-
+        ball.style.top =
+            Math.random() * maxY + "px";
+    });
 }
 
 
-/* =====================================================
-   HENTIKAN GERAKAN
-===================================================== */
+/* =========================================================
+   ANIMASI UNDIAN
+========================================================= */
 
-function hentikanGerakanBola(){
+function mulaiUndian() {
 
-    if(gerakanTimer){
-
-        clearInterval(
-            gerakanTimer
-        );
-
-        gerakanTimer = null;
-
+    if (sedangUndian) {
+        return;
     }
 
-}
+    if (namaTersedia.length === 0) {
 
+        petunjuk.textContent =
+            "🎉 Semua nama sudah terpilih!";
 
-/* =====================================================
-   MULAI UNDIAN
-===================================================== */
+        hasil.textContent =
+            "Tidak ada peserta tersisa.";
 
-function mulaiUndian(){
-
-    if(sedang) return;
-
-
-    if(nama.length === 0){
-
-        alert(
-            "Semua nama sudah habis!"
-        );
+        drawButton.disabled = true;
 
         return;
-
     }
 
 
-    sedang = true;
+    sedangUndian = true;
+
+    drawButton.disabled = true;
+
+    nextButton.style.display = "none";
+
+    smokeButton.style.display = "none";
+
+    fastTimerButton.style.display = "none";
+
+    resultBall.classList.remove("show");
+    resultBall.classList.remove("goyang");
+
+
+    petunjuk.textContent =
+        "🎲 Mengocok bola...";
+
+
+    hasil.textContent = "";
+
+
+    buatBola();
+
+
+    /* Kocok bola selama beberapa detik */
+
+    let jumlahKocokan = 0;
+
+    const intervalKocok =
+        setInterval(() => {
+
+            gerakkanBola();
+
+            jumlahKocokan++;
+
+            if (jumlahKocokan >= 15) {
+
+                clearInterval(intervalKocok);
+
+                pilihPemenang();
+            }
+
+        }, 150);
+
+}
+
+
+/* =========================================================
+   PILIH PEMENANG
+========================================================= */
+
+function pilihPemenang() {
+
+    if (namaTersedia.length === 0) {
+        selesaiUndian();
+        return;
+    }
+
+
+    const index =
+        Math.floor(
+            Math.random() *
+            namaTersedia.length
+        );
+
+
+    namaTerpilih =
+        namaTersedia[index];
+
+
+    namaTerakhir =
+        namaTerpilih;
+
+
+    /* Hapus dari daftar tersedia */
+
+    namaTersedia.splice(index, 1);
+
+
+    /* Tampilkan bola hasil */
+
+    resultBall.innerHTML =
+        "👆<br>TEKAN<br>BOLA";
+
+    resultBall.classList.remove("show");
+    resultBall.classList.remove("goyang");
+
+
+    /*
+       Memaksa browser melakukan reflow
+       supaya animasi bisa dimulai ulang.
+    */
+
+    void resultBall.offsetWidth;
+
+
+    resultBall.classList.add("show");
+
+
+    setTimeout(() => {
+
+        resultBall.classList.add("goyang");
+
+    }, 850);
+
+
+    petunjuk.textContent =
+        "🎯 Bola sudah keluar! Tekan bola.";
+
+
+    sedangUndian = false;
+
+    drawButton.disabled = false;
+}
+
+
+/* =========================================================
+   BUKA HASIL
+========================================================= */
+
+function bukaHasil() {
+
+    if (!namaTerpilih) {
+        return;
+    }
+
+
+    winnerName.textContent =
+        namaTerpilih;
+
+
+    winnerOverlay.classList.add("show");
+
+
+    buatConfetti();
+}
+
+
+/* =========================================================
+   TUTUP PEMENANG
+========================================================= */
+
+function tutupPemenang() {
+
+    winnerOverlay.classList.remove("show");
+
+
+    resultBall.classList.remove("goyang");
+
+
+    petunjuk.textContent =
+        "🎯 Pilih tindakan untuk " +
+        namaTerpilih;
+
+
+    hasil.textContent =
+        "Terpilih: " + namaTerpilih;
+
+
+    /*
+       Setelah popup ditutup,
+       pengguna memilih:
+       - NEXT
+       - MEROKOK
+    */
+
+    nextButton.style.display =
+        "inline-block";
+
+    smokeButton.style.display =
+        "inline-block";
+
+
+    drawButton.style.display =
+        "none";
+
+
+    restoreButton.style.display =
+        "inline-block";
+}
+
+
+/* =========================================================
+   NEXT - TIDAK MEROKOK
+========================================================= */
+
+function nextPerson() {
+
+    if (!namaTerpilih) {
+        return;
+    }
+
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+
+    hasil.textContent =
+        "✅ " + namaTerpilih +
+        " selesai / tidak merokok.";
+
+
+    petunjuk.textContent =
+        "🎲 Siap untuk peserta berikutnya.";
+
+
+    namaTerpilih = null;
+
+
+    resultBall.classList.remove("show");
+    resultBall.classList.remove("goyang");
+
+
+    nextButton.style.display =
+        "none";
+
+    smokeButton.style.display =
+        "none";
+
+    fastTimerButton.style.display =
+        "none";
+
+    drawButton.style.display =
+        "inline-block";
+
+    drawButton.disabled = false;
+
+
+    resetTimer();
+
+    buatBola();
+}
+
+
+/* =========================================================
+   MEROKOK
+========================================================= */
+
+function merokok() {
+
+    if (!namaTerpilih) {
+        return;
+    }
+
+
+    nextButton.style.display =
+        "none";
+
+    smokeButton.style.display =
+        "none";
+
+    fastTimerButton.style.display =
+        "inline-block";
 
 
     drawButton.disabled = true;
 
 
-    document.getElementById(
-        "hasil"
-    ).innerHTML = "";
+    waktuTersisa =
+        20 * 60;
 
 
-    document.getElementById(
-        "petunjuk"
-    ).innerHTML =
-        "🎱 BOLA SEDANG DIKOCOK...";
+    updateTimer();
 
 
-    resultBall.classList.remove(
-        "show"
-    );
+    petunjuk.textContent =
+        "🚬 " + namaTerpilih +
+        " sedang merokok. Waktu tersisa:";
 
 
-    /*
-    Pilih pemenang secara acak.
-    */
-
-    const index =
-        Math.floor(
-            Math.random() * nama.length
-        );
+    hasil.textContent =
+        "🚬 " + namaTerpilih;
 
 
-    pemenangSementara =
-        nama[index];
-
-
-    /*
-    Mulai gerakan.
-    */
-
-    mulaiGerakanBola();
-
-
-    /*
-    Durasi undian 4 detik.
-    */
-
-    setTimeout(()=>{
-
-        sedang = false;
-
-
-        hentikanGerakanBola();
-
-
-        document.getElementById(
-            "petunjuk"
-        ).innerHTML =
-            "👇 BOLA KELUAR! TEKAN UNTUK MEMBUKA";
-
-
-        resultBall.classList.add(
-            "show"
-        );
-
-
-    },4000);
-
+    mulaiTimer();
 }
 
 
-/* =====================================================
-   BUKA HASIL
-===================================================== */
+/* =========================================================
+   TIMER
+========================================================= */
 
-function bukaHasil(){
+function mulaiTimer() {
 
-    if(sedang) return;
+    clearInterval(timerInterval);
 
 
-    if(pemenangSementara === ""){
+    timerInterval =
+        setInterval(() => {
+
+            waktuTersisa--;
+
+            updateTimer();
+
+
+            if (waktuTersisa <= 0) {
+
+                clearInterval(timerInterval);
+
+                timerInterval = null;
+
+                waktuHabis();
+            }
+
+        }, 1000);
+}
+
+
+/* =========================================================
+   UPDATE TIMER
+========================================================= */
+
+function updateTimer() {
+
+    const menit =
+        Math.floor(waktuTersisa / 60);
+
+    const detik =
+        waktuTersisa % 60;
+
+
+    timerElement.textContent =
+        String(menit).padStart(2, "0") +
+        ":" +
+        String(detik).padStart(2, "0");
+
+
+    if (waktuTersisa <= 60) {
+
+        timerElement.classList.add("merah");
+
+    } else {
+
+        timerElement.classList.remove("merah");
+    }
+}
+
+
+/* =========================================================
+   PERCEPAT TIMER
+========================================================= */
+
+/*
+   Setiap tombol ditekan,
+   timer dipercepat 1 menit.
+
+   Contoh:
+   20:00 -> 19:00 -> 18:00 -> dst.
+*/
+
+function percepatTimer() {
+
+    if (!timerInterval) {
+        return;
+    }
+
+
+    waktuTersisa =
+        Math.max(
+            0,
+            waktuTersisa - 60
+        );
+
+
+    updateTimer();
+
+
+    if (waktuTersisa <= 0) {
+
+        clearInterval(timerInterval);
+
+        timerInterval = null;
+
+        waktuHabis();
+    }
+}
+
+
+/* =========================================================
+   WAKTU HABIS
+========================================================= */
+
+function waktuHabis() {
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+
+    timerElement.textContent =
+        "00:00";
+
+
+    timerElement.classList.add("merah");
+
+
+    petunjuk.textContent =
+        "⏰ Waktu 20 menit sudah habis!";
+
+
+    hasil.textContent =
+        "🚬 Waktu merokok selesai untuk " +
+        namaTerpilih;
+
+
+    fastTimerButton.style.display =
+        "none";
+
+
+    /*
+       Nama bisa dikembalikan
+       setelah timer selesai.
+    */
+
+    restoreButton.style.display =
+        "inline-block";
+
+
+    drawButton.style.display =
+        "inline-block";
+
+    drawButton.disabled = false;
+
+
+    nextButton.style.display =
+        "inline-block";
+}
+
+
+/* =========================================================
+   RESET TIMER
+========================================================= */
+
+function resetTimer() {
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    waktuTersisa = 20 * 60;
+
+    timerElement.classList.remove("merah");
+
+    updateTimer();
+}
+
+
+/* =========================================================
+   KEMBALIKAN NAMA
+========================================================= */
+
+function kembalikanNama() {
+
+    if (!namaTerakhir) {
+
+        hasil.textContent =
+            "Tidak ada nama yang bisa dikembalikan.";
 
         return;
-
     }
 
 
-    const pemenang =
-        pemenangSementara;
-
-
-    const index =
-        nama.indexOf(pemenang);
-
-
     /*
-    Simpan untuk restore.
+       Jangan masukkan dua kali.
     */
 
-    if(index !== -1){
+    if (!namaTersedia.includes(namaTerakhir)) {
 
-        namaKeluar.push({
-
-            nama:nama[index],
-
-            warna:warna[index]
-
-        });
-
-
-        /*
-        Hapus nama dari undian.
-        */
-
-        nama.splice(index,1);
-
-        warna.splice(index,1);
-
+        namaTersedia.push(namaTerakhir);
     }
 
 
-    namaTerpilihSekarang =
-        pemenang;
+    hasil.textContent =
+        "🔄 " + namaTerakhir +
+        " telah ditambahkan kembali.";
 
 
-    pemenangSementara = "";
+    petunjuk.textContent =
+        "🎲 Nama sudah tersedia untuk undian berikutnya.";
 
 
-    /*
-    Sembunyikan bola.
-    */
-
-    resultBall.classList.remove(
-        "show"
-    );
+    namaTerpilih = null;
 
 
-    /*
-    Tampilkan overlay.
-    */
+    restoreButton.style.display =
+        "none";
 
-    document.getElementById(
-        "winnerName"
-    ).textContent =
-        pemenang;
+    nextButton.style.display =
+        "none";
 
+    smokeButton.style.display =
+        "none";
 
-    document.getElementById(
-        "winnerOverlay"
-    ).classList.add(
-        "show"
-    );
+    fastTimerButton.style.display =
+        "none";
 
 
-    /*
-    Confetti.
-    */
-
-    buatConfetti();
+    resultBall.classList.remove("show");
+    resultBall.classList.remove("goyang");
 
 
-    /*
-    Update bola.
-    */
+    drawButton.style.display =
+        "inline-block";
 
-    gambarBola();
+    drawButton.disabled = false;
 
+
+    resetTimer();
+
+    buatBola();
 }
 
 
-/* =====================================================
+/* =========================================================
    CONFETTI
-===================================================== */
+========================================================= */
 
-function buatConfetti(){
+function buatConfetti() {
 
-    const colors = [
-
+    const warna = [
         "#FFD700",
         "#ff7675",
         "#74b9ff",
         "#55efc4",
         "#fd79a8",
-        "#ffffff"
-
+        "#a29bfe",
+        "#ffeaa7"
     ];
 
 
-    for(
-        let i=0;
-        i<80;
-        i++
-    ){
+    for (let i = 0; i < 80; i++) {
 
-        const c =
-            document.createElement(
-                "div"
-            );
+        const confetti =
+            document.createElement("div");
 
 
-        c.className =
+        confetti.className =
             "confetti";
 
 
-        c.style.left =
-            Math.random()*100 + "vw";
+        confetti.style.left =
+            Math.random() * 100 + "vw";
 
 
-        c.style.background =
-            colors[
+        confetti.style.background =
+            warna[
                 Math.floor(
-                    Math.random()
-                    * colors.length
+                    Math.random() *
+                    warna.length
                 )
             ];
 
 
-        c.style.animationDelay =
-            Math.random()*1.5 + "s";
+        confetti.style.animationDuration =
+            (2 + Math.random() * 2) + "s";
 
 
-        c.style.transform =
-            `rotate(
-                ${Math.random()*360}deg
-            )`;
+        confetti.style.transform =
+            "rotate(" +
+            Math.random() * 360 +
+            "deg)";
 
 
-        document.body.appendChild(c);
+        document.body.appendChild(confetti);
 
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
-            c.remove();
+            confetti.remove();
 
-        },4500);
-
+        }, 4500);
     }
-
 }
 
 
-/* =====================================================
-   TUTUP PEMENANG
-===================================================== */
+/* =========================================================
+   STATUS AWAL
+========================================================= */
 
-function tutupPemenang(){
-
-    document.getElementById(
-        "winnerOverlay"
-    ).classList.remove(
-        "show"
-    );
-
-
-    document.getElementById(
-        "hasil"
-    ).innerHTML =
-
-        "🏆 " +
-        namaTerpilihSekarang +
-        " TERPILIH!";
-
-
-    document.getElementById(
-        "petunjuk"
-    ).innerHTML =
-        "🎉 Pemenang telah ditentukan";
-
-
-    document.getElementById(
-        "nextButton"
-    ).style.display =
-        "inline-block";
-
-
-    document.getElementById(
-        "smokeButton"
-    ).style.display =
-        "inline-block";
-
-
-    document.getElementById(
-        "restoreButton"
-    ).style.display =
-        "inline-block";
-
-
-    drawButton.disabled = false;
-
-
-    if(nama.length === 0){
-
-        drawButton.innerHTML =
-            "🎉 SEMUA SELESAI";
-
-        drawButton.disabled = true;
-
-    }
-
-}
-
-
-/* =====================================================
-   NEXT
-===================================================== */
-
-function nextPerson(){
-
-    document.getElementById(
-        "hasil"
-    ).innerHTML =
-
-        "➡️ " +
-        namaTerpilihSekarang +
-        " Lewat (Tidak Merokok)";
-
-
-    document.getElementById(
-        "nextButton"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "smokeButton"
-    ).style.display =
-        "none";
-
-
-    namaTerpilihSekarang = "";
-
-}
-
-
-/* =====================================================
-   MEROKOK
-===================================================== */
-
-function merokok(){
-
-    document.getElementById(
-        "hasil"
-    ).innerHTML =
-
-        "🚬 " +
-        namaTerpilihSekarang +
-        " Merokok - Waktu 20 Menit";
-
-
-    document.getElementById(
-        "nextButton"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "smokeButton"
-    ).style.display =
-        "none";
-
-
-    namaTerpilihSekarang = "";
-
-
-    mulaiTimer();
-
-}
-
-
-/* =====================================================
-   TIMER 20 MENIT
-===================================================== */
-
-function mulaiTimer(){
-
-    let menit = 20;
-    let detik = 0;
-
-    const timer =
-        document.getElementById("timer");
-
-    const fastButton =
-        document.getElementById("fastTimerButton");
+function selesaiUndian() {
 
     drawButton.disabled = true;
 
-    drawButton.innerHTML =
-        "⏳ Timer Sedang Berjalan";
+    petunjuk.textContent =
+        "🎉 Semua peserta sudah selesai.";
 
-    // LANGSUNG tampilkan tombol percepat
-    fastButton.style.display = "inline-block";
-
-    clearInterval(timerInterval);
-
-    timer.classList.remove("merah");
-
-    timer.innerHTML =
-        "⏱️ Waktu: 20:00";
-
-    timerInterval = setInterval(() => {
-
-        if (menit === 0 && detik === 0) {
-
-            clearInterval(timerInterval);
-
-            timer.innerHTML =
-                "🚭 WAKTU SELESAI";
-
-            drawButton.disabled = false;
-
-            drawButton.innerHTML =
-                "🎲 MULAI UNDIAN";
-
-            fastButton.style.display = "none";
-
-            return;
-        }
-
-        if (detik === 0) {
-
-            menit--;
-            detik = 59;
-
-        } else {
-
-            detik--;
-
-        }
-
-        if (menit === 0) {
-
-            timer.classList.add("merah");
-
-        }
-
-        const m =
-            String(menit).padStart(2, "0");
-
-        const d =
-            String(detik).padStart(2, "0");
-
-        timer.innerHTML =
-            "⏱️ Waktu: " + m + ":" + d;
-
-    }, 1000);
+    hasil.textContent =
+        "Tidak ada nama tersisa.";
 }
-// ============================================
-// PERCEPAT / SKIP TIMER
-// ============================================
 
-function percepatTimer(){
 
-    // Hentikan timer sekarang juga
-    clearInterval(timerInterval);
+/* =========================================================
+   INISIALISASI
+========================================================= */
 
-    // Tampilkan status
-    const timer =
-        document.getElementById("timer");
+window.addEventListener(
+    "load",
+    () => {
 
-    timer.classList.remove("merah");
+        resetTimer();
 
-    timer.innerHTML =
-        "⚡ TIMER DIPERCEPAT";
+        buatBola();
 
-    // Aktifkan tombol undian
-    drawButton.disabled = false;
-
-    drawButton.innerHTML =
-        "🎲 MULAI UNDIAN";
-
-    // Sembunyikan tombol percepat
-    document.getElementById(
-        "fastTimerButton"
-    ).style.display = "none";
-
-}
-   
-   
-/* =====================================================
-   RESTORE
-===================================================== */
-
-function kembalikanNama(){
-
-    if(
-        namaKeluar.length === 0
-    ){
-
-        alert(
-            "Tidak ada nama yang bisa dikembalikan."
-        );
-
-        return;
+        petunjuk.textContent =
+            "🎲 Tekan tombol untuk mengundi";
 
     }
-
-
-    namaKeluar.forEach(item=>{
-
-        nama.push(
-            item.nama
-        );
-
-        warna.push(
-            item.warna
-        );
-
-    });
-
-
-    namaKeluar = [];
-
-
-    document.getElementById(
-        "restoreButton"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "hasil"
-    ).innerHTML =
-        "✅ Semua nama dikembalikan";
-
-
-    document.getElementById(
-        "petunjuk"
-    ).innerHTML =
-        "🎲 Semua nama siap diundi kembali";
-
-
-    drawButton.disabled = false;
-
-
-    drawButton.innerHTML =
-        "🎲 MULAI UNDIAN";
-
-
-    gambarBola();
-
-}
-
-
-/* =====================================================
-   MULAI
-===================================================== */
-
-gambarBola();
+);
 
 </script>
 
-</body>
 
+</body>
 </html>
-```
